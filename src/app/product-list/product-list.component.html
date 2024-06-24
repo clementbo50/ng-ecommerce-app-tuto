@@ -9,7 +9,7 @@
         [title]="product.title"
         [description]="product.description"
         [price]="product.price"
-        (addToCartEvent)="addToCart(product)">
+        (add)="handleAddToCart($event)">
         <!-- Événement lorsque l'utilisateur clique sur le bouton "Ajouter au panier" -->
       </app-product-item>
     </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { ProductItemComponent } from '../product-item/product-item.component';
 import { CommonModule } from '@angular/common';
 
@@ -19,8 +19,10 @@ export class ProductListComponent {
     { imageUrl: 'https://picsum.photos/200/300?blur=2', title: 'Product 3', description: 'Description of product 3', price: 30 },
   ];
 
-  addToCart(product: any) {
-    console.log('Product added to cart:', product);
+  @Output() addToCart = new EventEmitter<any>();
+
+  handleAddToCart(product: any) {
+    this.addToCart.emit(product);
   }
 
 }

@@ -19,7 +19,7 @@ export class ProductItemComponent implements OnInit{
   /**
    * Événement émis lorsqu'un produit est ajouté au panier.
    */
-  @Output() addToCartEvent = new EventEmitter<void>();
+  @Output() add = new EventEmitter<any>();
 
   /**
    * Émet l'événement addToCartEvent lorsqu'on l'appelle.
@@ -31,6 +31,11 @@ export class ProductItemComponent implements OnInit{
   }
   addToCartEmitter() {
     // Émet l'événement addToCartEvent pour notifier le composant parent que le produit a été ajouté au panier.
-    this.addToCartEvent.emit();
+    this.add.emit({
+      imageUrl: this.imageUrl,
+      title: this.title,
+      description: this.description,
+      price: this.price
+    });
   }
 }
