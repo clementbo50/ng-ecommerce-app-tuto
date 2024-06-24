@@ -1,0 +1,9 @@
+<div class="card h-100">
+    <img [src]="imageUrl" alt="{{ title }}" class="card-img-top">
+    <div class="card-body">
+        <h5 class="card-title">{{ title }}</h5>
+        <p class="card-text">{{ description }}</p>
+        <p class="card-text ">Prix : {{ price | currency: 'EUR' }}</p>
+        <button (click)="addToCartEmitter()" class="btn btn-primary">Ajouter au panier</button>
+    </div>
+</div>
