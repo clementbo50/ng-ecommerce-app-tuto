@@ -2,9 +2,15 @@
     <h3>Panier</h3>
     <ul class="list-group">
         <li class="list-group-item" *ngFor="let item of cartItems">
-            <img [src]="item.imageUrl" alt="{{ item.title }}" width="50">
-            <span>{{ item.title }} - {{ item.price | currency: 'EUR' }}</span>
+            <div>
+                <img [src]="item.imageUrl" alt="{{ item.title }}" width="50">
+                <span>{{ item.title }} - {{ item.price | currency: 'EUR' }} x {{ item.quantity }}</span>
+            </div>
+           <button class="btn btn-danger" (click)="removeProductFromCart(item)">Supprimer</button>
         </li>
         <li class="list-group-item" *ngIf="!cartItems.length">Aucun produit dans le panier</li>
     </ul>
+    <div class="total">
+        <h4>Total : {{ totalPrice | currency: 'EUR' }}</h4>
+    </div>
 </div>

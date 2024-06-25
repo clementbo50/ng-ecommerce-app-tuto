@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { ProductListComponent } from './product-list/product-list.component';
 import { CartComponent } from './cart/cart.component';
-import { never } from 'rxjs';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    RouterOutlet,
     ProductListComponent,
     CartComponent
 
@@ -19,9 +17,18 @@ import { never } from 'rxjs';
 export class AppComponent {
  cartItems: any[] = [];
 
-  handleAddToCart(product: any) {
-    this.cartItems.push(product);
-    
+  
+
+  addProductToCart(product: any) {
+    const existingProduct = this.cartItems.find(item => item.title === product.title);
+
+    if (existingProduct) {
+      // Si le produit est déjà dans le panier, augmenter la quantité
+      existingProduct.quantity += 1;
+    } else {
+      // Si le produit n'est pas dans le panier, l'ajouter avec une quantité de 1
+      this.cartItems.push({ ...product, quantity: 1 });
+    }
   }
   
 }

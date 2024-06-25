@@ -19,10 +19,10 @@ export class ProductListComponent {
     { imageUrl: 'https://picsum.photos/200/300?blur=2', title: 'Product 3', description: 'Description of product 3', price: 30 },
   ];
 
-  @Output() addToCart = new EventEmitter<any>();
+  @Output() addProductToCart = new EventEmitter<any>();
 
   handleAddToCart(product: any) {
-    this.addToCart.emit(product);
+    this.addProductToCart.emit(product);
   }
 
 }
